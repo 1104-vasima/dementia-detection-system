@@ -4,6 +4,7 @@ Medical report generation using Generative AI
 import os
 from datetime import datetime
 import io
+import numpy as np
 from PIL import Image
 
 def generate_medical_report(patient_name, age, gender, clinical_notes, prediction, confidence):
@@ -394,3 +395,62 @@ def generate_pdf_report(patient_name, age, gender, clinical_notes, prediction, c
         raise ImportError("reportlab library not installed. Install with: pip install reportlab")
     except Exception as e:
         raise Exception(f"PDF generation error: {str(e)}")
+
+def generate_report(prediction, confidence, probabilities, gradcam_image, 
+                   patient_name="Not Provided", age="Not Provided", 
+                   gender="Not Provided", clinical_notes="None provided"):
+    """
+    Generate a PDF report file from prediction results
+    
+    Args:
+        prediction: Predicted dementia class
+        confidence: Confidence score (percentage)
+        probabilities: Dictionary of class probabilities
+        gradcam_image: Grad-CAM visualization image (numpy array, BGR format)
+        patient_name: Patient's name (optional)
+        age: Patient's age (optional)
+        gender: Patient's gender (optional)
+        clinical_notes: Clinical notes (optional)
+        
+    Returns:
+        Path to generated PDF file
+    """
+    import tempfile
+    import cv2
+    
+    # Convert numpy array (BGR) to PIL Image (RGB)
+    if isinstance(gradcam_image, np.ndarray):
+        # Convert BGR to RGB
+        gradcam_image_rgb = cv2.cvtColor(gradcam_image, cv2.COLOR_BGR2RGB)
+        gradcam_pil = Image.fromarray(gradcam_image_rgb)
+    else:
+        gradcam_pil = gradcam_image
+    
+    # Generate report text
+    report_text = generate_template_report(
+        patient_name, age, gender, clinical_notes, prediction, confidence
+    )
+    
+    # Create temporary file for PDF
+    temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.pdf')
+    temp_path = temp_file.name
+    temp_file.close()
+    
+    # Generate PDF (without original image for now, just gradcam)
+    pdf_bytes = generate_pdf_report(
+        patient_name=patient_name,
+        age=age,
+        gender=gender,
+        clinical_notes=clinical_notes,
+        prediction=prediction,
+        confidence=confidence,
+        original_image=None,  # Can be added later if needed
+        gradcam_image=gradcam_pil,
+        report_text=report_text
+    )
+    
+    # Write PDF to file
+    with open(temp_path, 'wb') as f:
+        f.write(pdf_bytes)
+    
+    return temp_path
