@@ -264,3 +264,13 @@ For issues, questions, or contributions, please refer to the project repository 
 ---
 
 **Built with ❤️ using Streamlit, TensorFlow, and modern AI technologies**
+## Application Screenshots
+
+### Login Page
+![Login Page](demantia.jpeg)
+
+### Dashboard
+![Dashboard](demantia2.jpeg)
+
+### Prediction Page
+![Prediction Page](demantia3.jpeg)
