@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* Typography Reset - Safe font family configuration preserving icon fonts */
+body, button, input, select, textarea, label {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* Explicitly protect icon fonts from being overridden by Poppins */
+i, .fa, .fas, .far, .fa-solid, .fa-regular, .fa-brands, svg, [data-testid="stIcon"] {
+    font-family: inherit !important;
+}
+
+body {
+    background-color: #F8FAFC;
+    color: #1E293B;
+}
+
+/* Hide Streamlit Header & Footer */
+header {visibility: hidden;}
+footer {visibility: hidden;}
+#MainMenu {visibility: hidden;}
+
+/* Custom Top Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 2rem;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.navbar-brand span {
+    color: #0d9488;
+}
+
+.navbar-brand i {
+    font-size: 1.4rem;
+    color: #0d9488;
+}
+
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-badge {
+    background: rgba(13, 148, 136, 0.15);
+    color: #0d9488;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(13, 148, 136, 0.3);
+}
+
+/* Hero Section */
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding-right: 1rem;
+}
+
+.hero-tag {
+    display: inline-block;
+    background: rgba(13, 148, 136, 0.1);
+    color: #0d9488;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.hero-container h1 {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    line-height: 1.25 !important;
+    margin-bottom: 1rem !important;
+}
+
+.hero-container h1 span {
+    color: #0d9488;
+}
+
+.hero-container p {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Premium Login Card */
+div[data-testid="stForm"] {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    padding: 2.5rem !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04) !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header h2 {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
+}
+
+.login-header p {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+/* Input Fields Styling */
+div[data-testid="stTextInput"] label {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    color: #475569 !important;
+    margin-bottom: 0.4rem !important;
+}
+
+div[data-testid="stTextInput"] input {
+    border-radius: 8px !important;
+    border: 1px solid #e2e8f0 !important;
+    padding: 0.65rem 1rem !important;
+    font-size: 0.9rem !important;
+    transition: all 0.2s ease !important;
+    color: #1e293b !important;
+}
+
+div[data-testid="stTextInput"] input:focus {
+    border-color: #0d9488 !important;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15) !important;
+}
+
+/* Custom Login/Streamlit Buttons */
+div.stButton button, div[data-testid="stForm"] button {
+    background: linear-gradient(135deg, #0d9488, #0f766e) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 0.65rem 1.5rem !important;
+    border-radius: 8px !important;
+    border: none !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.15) !important;
+    width: 100% !important;
+}
+
+div.stButton button:hover, div[data-testid="stForm"] button:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px rgba(13, 148, 136, 0.25) !important;
+}
+
+div.stButton button:active, div[data-testid="stForm"] button:active {
+    transform: translateY(0) !important;
+}
+
+/* Expanders and Card Sections */
+div[data-testid="stExpander"] {
+    background: white !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02) !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* File Uploader Style */
+div[data-testid="stFileUploader"] {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+div[data-testid="stFileUploaderDropzone"] {
+    background: #f8fafc !important;
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stFileUploaderDropzone"]:hover {
+    border-color: #0d9488 !important;
+    background: #f0fdfa !important;
+}
+
+div[data-testid="stFileUploaderDropzone"] button {
+    background: #ffffff !important;
+    color: #0d9488 !important;
+    border: 1px solid #0d9488 !important;
+    box-shadow: none !important;
+    font-weight: 500 !important;
+    width: auto !important;
+    margin: 0.5rem auto 0 !important;
+    display: block !important;
+}
+
+div[data-testid="stFileUploaderDropzone"] button:hover {
+    background: #0d9488 !important;
+    color: #ffffff !important;
+}
+
+/* Sidebar overrides */
+section[data-testid="stSidebar"] {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+}
+
+section[data-testid="stSidebar"] * {
+    color: #f8fafc !important;
+}
+
+section[data-testid="stSidebar"] button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+section[data-testid="stSidebar"] button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: #0d9488 !important;
+}

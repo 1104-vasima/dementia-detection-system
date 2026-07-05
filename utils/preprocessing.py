@@ -1,21 +1,21 @@
-<<<<<<< HEAD
+
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import preprocess_input
 
 def preprocess_uploaded_image(uploaded_file):
     """
-    Preprocess image exactly like ResNet50 training
+    Preprocess image exactly like model training ([0, 1] normalization)
     """
     img = image.load_img(uploaded_file, target_size=(224, 224))
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
 
-    # ResNet50 preprocessing
-    img_array = preprocess_input(img_array)
+    # Normalize pixel values to [0, 1]
+    img_array = img_array / 255.0
 
     return img_array
-=======
+
 """
 Image preprocessing utilities for MRI brain scans
 """
@@ -67,4 +67,4 @@ def preprocess_image_for_display(image, target_size=(224, 224)):
         image = image.convert('RGB')
     
     return image.resize(target_size, Image.Resampling.LANCZOS)
->>>>>>> 29fa703cec59b2eec93aedccc891802ebc584cbc
+
